@@ -10,13 +10,12 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts
   end
   
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.account_activation(@user).deliver_now
-      puts("Please check your email to activate your account. !!!!!!!!!!!!!!!!!!!!!!!")
       redirect_to root_url
     else
       render 'new'
@@ -26,6 +25,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  
   
   def index
     @users = User.all

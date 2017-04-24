@@ -1,11 +1,10 @@
 class User < ActiveRecord::Base
-    attr_accessor :remember_token, :activation_token
-    before_create :create_activation_digest
     VALID_NAME = /\A[a-zA-Z]+\z/
     VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :name, presence: true, length: { maximum: 20}, format: { with: VALID_NAME }
     validates :email, presence: true, format: { with: VALID_EMAIL }, uniqueness: { case_sensitive: false }
     has_secure_password
+    has_many :microposts, dependent: :destroy
     validates :password, presence: true, length: { minimum: 6 }
     
     def User.digest(string)
@@ -33,8 +32,9 @@ class User < ActiveRecord::Base
         update_attribute(:remember_digest, nil)
     end
     
-    def create_activation_digest
-      self.activation_token  = User.new_token
-      self.activation_digest = User.digest(activation_token)
+    def feed
+        Micropost.where("user_id = ?", id)
     end
+    
+    
 end
