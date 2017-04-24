@@ -11,10 +11,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts
+    @membership = @user.membership
   end
   
   def create
     @user = User.new(user_params)
+    @membership = Membership.create(params[:membership])
+    @user.membership = @membership
     if @user.save
       redirect_to root_url
     else
@@ -25,6 +28,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  
   
   
   def index

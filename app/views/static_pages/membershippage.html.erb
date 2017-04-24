@@ -1,0 +1,14 @@
+<% provide(:title, "Result test page") %>
+<p>Membership</p>
+
+<div class="col-md-8">
+    <div class="col-md-8">
+    <% if @user.membership %>
+        <p>Membership Type</p>
+        <%= @user.membership.memtype %>
+    <% end %>
+    </div>
+    <section class="membershipt_form">
+        <%= render 'shared/membership_form' %>
+    </section>
+ </div>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get  '/help',      to: 'static_pages#help'
   get  '/about',     to: 'static_pages#about'
   get  '/contact',   to: 'static_pages#contact'
-  get  '/resulttest',to: 'static_pages#resulttest'
+  get  '/memberpage',to: 'static_pages#membershippage'
   get  '/signup',    to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   
   resources :users
   resources :microposts,          only: [:create, :destroy]
+  resources :memberships,          only: [:create, :destroy]
 
 end

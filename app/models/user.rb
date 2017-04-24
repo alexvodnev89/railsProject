@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     validates :email, presence: true, format: { with: VALID_EMAIL }, uniqueness: { case_sensitive: false }
     has_secure_password
     has_many :microposts, dependent: :destroy
+    has_one :membership, dependent: :destroy
     validates :password, presence: true, length: { minimum: 6 }
     
     def User.digest(string)
