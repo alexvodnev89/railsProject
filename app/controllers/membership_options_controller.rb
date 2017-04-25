@@ -74,7 +74,6 @@ class MembershipOptionsController < ApplicationController
     end
     
     def correct_user
-      @user = current_user
-      redirect_to root_url if !current_user.admin
+      redirect_to root_url if !admin_user? && !logged_in?
     end
 end

@@ -22,7 +22,12 @@
         <h3>Email :</h3>
         <h1><%= @user.email %></h2>
       </div>
-      
+      <% if @user.membership.memtype %>
+        <div>
+          <h3>Membership type :</h3>
+          <h1><%= @user.membership.memtype %></h2>
+        </div>
+      <% end %>
     </section>
   </aside>
 </div>

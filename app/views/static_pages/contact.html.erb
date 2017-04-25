@@ -1,5 +1,60 @@
 <% provide(:title, "Contact") %>
-<h1>Contact</h1>
-<p>
-  Contact us page is under constuction.
-</p>
+<% if admin_user? %>
+
+<a class="btn btn-lg btn-primary" href="https://finalproject-alexvodnev89.c9users.io/messages">View user messages</a>
+
+
+<% else %>
+
+<h3>Leave you message please</h3>
+    
+    <% if logged_in? %>
+    
+      <%= form_for Message.new do |f| %>
+        <div class="field">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, :value => current_user.name, readonly: true,class: 'form-control'%>
+        </div>
+        <div class="field">
+          <%= f.label :phone %><br>
+          <%= f.text_field :phone %>
+        </div>
+        <div class="field">
+          <%= f.label :email %><br>
+          <%= f.text_field :email, :value => current_user.email,readonly: true,class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :messagebody %><br>
+          <%= f.text_area :messagebody %>
+        </div>
+        <div class="actions">
+          <%= f.submit class: "btn btn-primary"%>
+        </div>
+      <% end %>
+    
+    <% else %>
+    
+      <%= form_for Message.new do |f| %>
+        <div class="field">
+          <%= f.label :name %><br>
+          <%= f.text_field :name ,class: 'form-control'%>
+        </div>
+        <div class="field">
+          <%= f.label :phone %><br>
+          <%= f.text_field :phone,class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :email %><br>
+          <%= f.text_field :email,class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :messagebody %><br>
+          <%= f.text_area :messagebody,class: 'form-control' %>
+        </div>
+        <div class="actions">
+          <%= f.submit class: "btn btn-primary"%>
+        </div>
+      <% end %>
+    <% end %>
+
+<% end %>

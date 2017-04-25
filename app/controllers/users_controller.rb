@@ -19,7 +19,9 @@ class UsersController < ApplicationController
     @membership = Membership.create(params[:membership])
     @user.membership = @membership
     if @user.save
-      redirect_to root_url
+      
+      log_in @user
+      redirect_to welcome_path
     else
       render 'new'
     end
@@ -62,7 +64,6 @@ class UsersController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
   end
-  
   
   private
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425120030) do
+ActiveRecord::Schema.define(version: 20170425173052) do
 
   create_table "membership_options", force: :cascade do |t|
     t.string   "title"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20170425120030) do
   end
 
   add_index "memberships", ["user_id", "created_at"], name: "index_memberships_on_user_id_and_created_at"
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.text     "messagebody"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"

@@ -40,6 +40,8 @@ module SessionsHelper
     end
     
     def admin_user?
-        current_user.admin == true
+        if logged_in?
+            current_user.admin == true
+        end
     end
 end

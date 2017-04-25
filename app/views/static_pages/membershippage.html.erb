@@ -1,31 +1,29 @@
 <% provide(:title, "Result test page") %>
 <p>Membership</p>
 
-<div class="col-md-8">
-    <% if admin_user? %>
-        <div class="col-md-8">
-            <h2>Admin membership page</h2>
-            <a href="https://project-alexvodnev89.c9users.io/membership_options">Membership Options</a>
-        </div>
-    <% else %>
+
+<% if admin_user? %>
+        <h2>Admin membership page</h2>
+        <a class="btn btn-lg btn-primary" href="https://finalproject-alexvodnev89.c9users.io/membership_options">Membership Options</a>
+<% else %>
+    <div>
         <div>
-            <div class="col-md-8">
-                <% if @user.membership.memtype %>
-                    <% if @membership_options.find_by_title(@user.membership.memtype) %>
-                            <%= form_for(@membership_options.find_by_title(@user.membership.memtype)) do |f| %>
-                            <%= f.label :title %>
-                            <%= f.text_field :title,readonly: true, class: 'form-control' %>
-                            <%= f.label :description %>
-                            <%= f.text_field :description,readonly: true, class: 'form-control' %>
-                            <%= f.label :price %>
-                            <%= f.text_field :price, readonly: true, class: 'form-control' %>
-                            <% end %>
-                    <% end %>
+            <% if @user.membership.memtype %>
+                <% if @membership_options.find_by_title(@user.membership.memtype) %>
+                        <%= form_for(@membership_options.find_by_title(@user.membership.memtype)) do |f| %>
+                        <%= f.label :title %>
+                        <%= f.text_field :title,readonly: true, class: 'form-control' %>
+                        <%= f.label :description %>
+                        <%= f.text_field :description,readonly: true, class: 'form-control' %>
+                        <%= f.label :price %>
+                        <%= f.text_field :price, readonly: true, class: 'form-control' %>
+                        <% end %>
                 <% end %>
-            </div>
-            <section class="membershipt_form">
-                <%= render 'shared/membership_form' %>
-            </section>
+            <% end %>
         </div>
-    <% end %>
-</div>
+        <section class="membershipt_form">
+            <%= render 'shared/membership_form' %>
+        </section>
+    </div>
+<% end %>
+

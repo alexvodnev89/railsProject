@@ -1,0 +1,7 @@
+<% provide(:title, "Thank you") %>
+
+<h2>Thank you</h2>
+
+<p>Your message was successfully received</p>
+
+<p>We will get back to as soon as possible</p>
