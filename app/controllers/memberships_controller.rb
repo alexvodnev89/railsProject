@@ -1,13 +1,12 @@
 class MembershipsController < ApplicationController
     def create
+        
         @membership = current_user.membership(membership_params)
+        
+        puts(params)
+        
         @membership.memtype = membership_params[:memtype]
         if @membership.save
-    
-            
-            puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-            puts(@membership.memtype)
-            
             redirect_to memberpage_path
         else
             render 'static_pages/home'
@@ -18,6 +17,6 @@ class MembershipsController < ApplicationController
   private
   
     def membership_params
-      params.require(:membership).permit(:memtype)
+      params.permit(:memtype)
     end
 end

@@ -2,7 +2,12 @@
 <%= form_for Membership.new do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :memtype%>
-  </div>
+    <h3>Membership options</h3>
+    <select name="memtype" id="memtype">
+      <%for membership_option in @membership_options%>
+      <option value="<%=membership_option.title%>"><%=membership_option.title%></option>
+      optionid = membership_option.title
+      <%end%>
+    </select>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

@@ -2,13 +2,30 @@
 <p>Membership</p>
 
 <div class="col-md-8">
-    <div class="col-md-8">
-    <% if @user.membership %>
-        <p>Membership Type</p>
-        <%= @user.membership.memtype %>
+    <% if admin_user? %>
+        <div class="col-md-8">
+            <h2>Admin membership page</h2>
+            <a href="https://project-alexvodnev89.c9users.io/membership_options">Membership Options</a>
+        </div>
+    <% else %>
+        <div>
+            <div class="col-md-8">
+                <% if @user.membership.memtype %>
+                    <% if @membership_options.find_by_title(@user.membership.memtype) %>
+                            <%= form_for(@membership_options.find_by_title(@user.membership.memtype)) do |f| %>
+                            <%= f.label :title %>
+                            <%= f.text_field :title,readonly: true, class: 'form-control' %>
+                            <%= f.label :description %>
+                            <%= f.text_field :description,readonly: true, class: 'form-control' %>
+                            <%= f.label :price %>
+                            <%= f.text_field :price, readonly: true, class: 'form-control' %>
+                            <% end %>
+                    <% end %>
+                <% end %>
+            </div>
+            <section class="membershipt_form">
+                <%= render 'shared/membership_form' %>
+            </section>
+        </div>
     <% end %>
-    </div>
-    <section class="membershipt_form">
-        <%= render 'shared/membership_form' %>
-    </section>
- </div>
+</div>

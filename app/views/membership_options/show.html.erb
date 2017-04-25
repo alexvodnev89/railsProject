@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @membership_option.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @membership_option.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @membership_option.price %>
+</p>
+
+<%= link_to 'Edit', edit_membership_option_path(@membership_option) %> |
+<%= link_to 'Back', membership_options_path %>

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424103240) do
+ActiveRecord::Schema.define(version: 20170425120030) do
+
+  create_table "membership_options", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "memberships", force: :cascade do |t|
     t.string   "memtype"

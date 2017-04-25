@@ -21,6 +21,7 @@ class StaticPagesController < ApplicationController
   
   def check
     @user = current_user
+    @membership_options = MembershipOption.all
   end
   
 
