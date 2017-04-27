@@ -1,7 +1,7 @@
 <% provide(:title, "Contact") %>
 <% if admin_user? %>
 
-<a class="btn btn-lg btn-primary" href="https://finalproject-alexvodnev89.c9users.io/messages">View user messages</a>
+<%= link_to 'View user messages', messages_path, class: "btn btn-lg btn-primary" %>
 
 
 <% else %>

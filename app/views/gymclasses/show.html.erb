@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @gymclass.name %>
+</p>
+
+<p>
+  <strong>Weekday:</strong>
+  <%= @gymclass.weekday %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @gymclass.description %>
+</p>
+
+<%= link_to 'Edit', edit_gymclass_path(@gymclass) %> |
+<%= link_to 'Back', gymclasses_path %>

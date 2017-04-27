@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Gymclasses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Weekday</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gymclasses.each do |gymclass| %>
+      <tr>
+        <td><%= gymclass.name %></td>
+        <td><%= gymclass.weekday %></td>
+        <td><%= gymclass.description %></td>
+        <td><%= link_to 'Show', gymclass %></td>
+        <td><%= link_to 'Edit', edit_gymclass_path(gymclass) %></td>
+        <td><%= link_to 'Destroy', gymclass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gymclass', new_gymclass_path %>

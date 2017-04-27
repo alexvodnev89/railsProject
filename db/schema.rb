@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425173052) do
+ActiveRecord::Schema.define(version: 20170427014534) do
+
+  create_table "Gymclasses_Users", id: false, force: :cascade do |t|
+    t.integer "user_id",     null: false
+    t.integer "gymclass_id", null: false
+  end
+
+  create_table "gymclasses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "weekday"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "membership_options", force: :cascade do |t|
     t.string   "title"
@@ -47,6 +60,13 @@ ActiveRecord::Schema.define(version: 20170425173052) do
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

@@ -1,0 +1,7 @@
+<% if admin_user? %>
+    <h1>New Page Option</h1>
+    
+    <%= render 'form' %>
+    
+    <%= link_to 'Back', pages_path %>
+<% end %>

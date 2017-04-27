@@ -1,0 +1,15 @@
+<% provide(:title, "Gym classes page") %>
+<p>Class</p>
+
+
+<% if admin_user? %>
+        <h2>Admin gym class page</h2>
+        <%= link_to 'Gym class options', gymclasses_path, class: "btn btn-lg btn-primary" %>
+<% else %>
+    <div>
+        <div>
+            
+        </div>
+   
+    </div>
+<% end %>

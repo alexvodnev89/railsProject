@@ -1,0 +1,16 @@
+<% if @page %>
+    <p>
+      <strong>Title:</strong>
+      <%= @page.title %>
+    </p>
+    
+    <p>
+      <strong>Content:</strong>
+      <%= @page.content %>
+    </p>
+<% else %>
+    <p>Sorry, page you are looking for doesnt exist</p>
+<% end %>
+<% if current_user && admin_user? %>
+  <%= link_to 'Back', pages_path %>
+<% end %>

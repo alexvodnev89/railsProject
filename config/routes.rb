@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   get  '/memberpage',to: 'static_pages#membershippage'
   get  '/welcome',   to: 'static_pages#userwelcome'
   get  '/thanks',    to: 'static_pages#thankyoupage'
+  get  '/gymclass',  to: 'static_pages#gymclasspage'
   get  '/signup',    to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  
   
 
   resources :users
@@ -19,5 +21,8 @@ Rails.application.routes.draw do
   resources :memberships,          only: [:create, :destroy]
   resources :membership_options
   resources :messages
-
+  resources :gymclasses
+  resources :pages
+  
+  get ':title', to: 'pages#show'
 end

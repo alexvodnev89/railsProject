@@ -23,6 +23,7 @@ class StaticPagesController < ApplicationController
     @user = current_user
     @membership_options = MembershipOption.all
     @mesaages = Message.all
+    @pages = Page.all
   end
   
 

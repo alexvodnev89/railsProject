@@ -1,10 +1,10 @@
-<% provide(:title, "Result test page") %>
+<% provide(:title, "Membership page") %>
 <p>Membership</p>
 
 
 <% if admin_user? %>
         <h2>Admin membership page</h2>
-        <a class="btn btn-lg btn-primary" href="https://finalproject-alexvodnev89.c9users.io/membership_options">Membership Options</a>
+        <%= link_to 'Membership options', membership_options_path, class: "btn btn-lg btn-primary" %>
 <% else %>
     <div>
         <div>

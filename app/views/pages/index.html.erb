@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<% if current_user && admin_user? %>
+  <h1>Listing Custom Pages</h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Page title</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @pages.each do |p| %>
+        <tr>
+          <td><%= p.title %></td>
+          <td><%= link_to 'Show', p.title %></td>
+          <td><%= link_to 'Destroy', p, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'New Page', new_page_path %>
+<% end %>
+
+<br>
