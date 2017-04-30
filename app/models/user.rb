@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
     has_secure_password
     has_many :microposts, dependent: :destroy
     has_one :membership, dependent: :destroy
-    has_and_belongs_to_many :gymclasses
     validates :password, presence: true, length: { minimum: 6 }
     
     def User.digest(string)
