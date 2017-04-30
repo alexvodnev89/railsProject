@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+    attr_accessor :remember_token, :activation_token
+    before_create :create_activation_digest
+    
     VALID_NAME = /\A[a-zA-Z]+\z/
     VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :name, presence: true, length: { maximum: 20}, format: { with: VALID_NAME }
@@ -38,5 +41,22 @@ class User < ActiveRecord::Base
         Micropost.where("user_id = ?", id)
     end
     
+    def downcase_email
+      self.email = email.downcase
+    end
     
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
+    
+    def activate
+        update_attribute(:activated,    true)
+        update_attribute(:activated_at, Time.zone.now)
+    end
+    
+    def send_activation_email
+        UserMailer.account_activation(self).deliver_now
+    end
+  
 end

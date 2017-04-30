@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :gymclasses
   resources :pages
+  resources :account_activations, only: [:edit]
   
   get ':title', to: 'pages#show'
 end

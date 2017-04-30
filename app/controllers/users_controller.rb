@@ -20,7 +20,8 @@ class UsersController < ApplicationController
     @user.membership = @membership
     if @user.save
       
-      log_in @user
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
       redirect_to welcome_path
     else
       render 'new'
