@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20170429235628) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "Gymclasses_Users", id: false, force: :cascade do |t|
     t.integer "user_id",     null: false
     t.integer "gymclass_id", null: false
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170429235628) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "memberships", ["user_id", "created_at"], name: "index_memberships_on_user_id_and_created_at"
+  add_index "memberships", ["user_id", "created_at"], name: "index_memberships_on_user_id_and_created_at", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.string   "name"
@@ -59,7 +62,7 @@ ActiveRecord::Schema.define(version: 20170429235628) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"
@@ -81,4 +84,6 @@ ActiveRecord::Schema.define(version: 20170429235628) do
     t.datetime "activated_at"
   end
 
+  add_foreign_key "memberships", "users"
+  add_foreign_key "microposts", "users"
 end
